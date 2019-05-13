@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
 const should = chai.should();
-const Pet = require('../models/pet');
+const Product = require('../models/product');
 
 const fido =     {
     "name": "Norman",
@@ -16,17 +16,17 @@ const fido =     {
 
 chai.use(chaiHttp);
 
-describe('Pets', ()  => {
+describe('Products', ()  => {
 
-  after(() => { 
-    Pet.deleteMany({$or: [{name: 'Norman'}, {name: 'Spider'}] }).exec((err, pets) => {
-      console.log(pets)
-      pets.remove();
-    }) 
+  after(() => {
+    Product.deleteMany({$or: [{name: 'Norman'}, {name: 'Spider'}] }).exec((err, products) => {
+      console.log(products)
+      products.remove();
+    })
   });
 
   // TEST INDEX
-  it('should index ALL pets on / GET', (done) => {
+  it('should index ALL products on / GET', (done) => {
     chai.request(server)
         .get('/')
         .end((err, res) => {
@@ -37,20 +37,20 @@ describe('Pets', ()  => {
   });
 
   // TEST NEW
-  it('should display new form on /pets/new GET', (done) => {
+  it('should display new form on /products/new GET', (done) => {
     chai.request(server)
-      .get(`/pets/new`)
+      .get(`/products/new`)
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.html
           done();
         });
   });
-  
-  // TEST CREATE 
-  it('should create a SINGLE pet on /pets POST', (done) => {
+
+  // TEST CREATE
+  it('should create a SINGLE product on /products POST', (done) => {
     chai.request(server)
-        .post('/pets')
+        .post('/products')
         .send(fido)
         .end((err, res) => {
           res.should.have.status(200);
@@ -60,11 +60,11 @@ describe('Pets', ()  => {
   });
 
   // TEST SHOW
-  it('should show a SINGLE pet on /pets/<id> GET', (done) => {
-    var pet = new Pet(fido);
-     pet.save((err, data) => {
+  it('should show a SINGLE product on /products/<id> GET', (done) => {
+    var product = new Product(fido);
+     product.save((err, data) => {
        chai.request(server)
-         .get(`/pets/${data._id}`)
+         .get(`/products/${data._id}`)
          .end((err, res) => {
            res.should.have.status(200);
            res.should.be.html
@@ -75,11 +75,11 @@ describe('Pets', ()  => {
   });
 
   // TEST EDIT
-  it('should edit a SINGLE pet on /pets/<id>/edit GET', (done) => {
-    var pet = new Pet(fido);
-     pet.save((err, data) => {
+  it('should edit a SINGLE product on /products/<id>/edit GET', (done) => {
+    var product = new Product(fido);
+     product.save((err, data) => {
        chai.request(server)
-         .get(`/pets/${data._id}/edit`)
+         .get(`/products/${data._id}/edit`)
          .end((err, res) => {
            res.should.have.status(200);
            res.should.be.html
@@ -90,11 +90,11 @@ describe('Pets', ()  => {
 
 
   // TEST UPDATE
-  it('should update a SINGLE pet on /pets/<id> PUT', (done) => {
-    var pet = new Pet(fido);
-    pet.save((err, data)  => {
+  it('should update a SINGLE product on /products/<id> PUT', (done) => {
+    var product = new Product(fido);
+    product.save((err, data)  => {
      chai.request(server)
-      .put(`/pets/${data._id}?_method=PUT`)
+      .put(`/products/${data._id}?_method=PUT`)
       .send({'name': 'Spider'})
       .end((err, res) => {
         res.should.have.status(200);
@@ -105,11 +105,11 @@ describe('Pets', ()  => {
   });
 
   // TEST DELETE
-  it('should delete a SINGLE pet on /pets/<id> DELETE', (done) => {
-    var pet = new Pet(fido);
-    pet.save((err, data)  => {
+  it('should delete a SINGLE product on /products/<id> DELETE', (done) => {
+    var product = new Product(fido);
+    product.save((err, data)  => {
      chai.request(server)
-      .delete(`/pets/${data._id}?_method=DELETE`)
+      .delete(`/products/${data._id}?_method=DELETE`)
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.html

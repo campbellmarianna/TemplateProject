@@ -3,17 +3,16 @@
 const mongoose = require('mongoose'),
         Schema = mongoose.Schema;
 
-const PetSchema = new Schema({
+const ProductSchema = new Schema({
     name            : { type: String, required: true }
-  , species         : { type: String }
-  , birthday        : { type: Date }
+  , category         : { type: String }
+  , supply        : { type: Date }
   , picUrl          : { type: String }
   , picUrlSq        : { type: String }
-  , favoriteFood    : { type: String }
   , description     : { type: String }
 },
 {
   timestamps: true
 });
 
-module.exports = mongoose.model('Pet', PetSchema);
+module.exports = mongoose.model('Product', ProductSchema);

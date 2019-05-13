@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .row
+    each product, index in products
+      .col-sm-4.justify-content-center
+        .card
+          img.card-img-top(src=product.picUrl, alt='Card image cap')
+          .card-body
+            h4.card-title= product.name
+            small.text-muted= product.species
+            p.card-text= product.description
+            .text-right
+                a.card-link(href=`/products/${product._id}`) View #{product.name}

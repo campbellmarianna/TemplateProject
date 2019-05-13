@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .row
+    .col-sm-4
+      if product.picUrlSq
+        img(src=product.picUrlSq).img-fluid
+    .col-sm-8
+      h1=product.name
+      p=product.species
+      p Born on #{product.birthday}
+      p=product.description
+      .text-right
+        a(href="/products/" + product.id + "/edit").btn-link Edit
+      

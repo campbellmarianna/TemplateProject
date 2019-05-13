@@ -1,0 +1,30 @@
+productextends layout
+
+block content
+    
+    .row.justify-content-center
+        .col-sm-6
+            legend New Product
+            form(action=`/products/${product._id}?_method=PUT`, method="POST")
+                .form-group
+                    label Name
+                    input.form-control(name="name" value=product.name)
+                .form-group
+                    label Category
+                    input.form-control(name="category" value=product.category)    
+                .form-group
+                    label Rectangular Image URL
+                    input.form-control(name="picUrl" value=product.picUrl) 
+                .form-group
+                    label Square Image URL
+                    input.form-control(name="picUrlSq" value=product.picUrlSq)
+                .form-group
+                    label Supply
+                    input.form-control(name="supply" value=product.supply)    
+                .form-group
+                    label Description
+                    textarea.form-control(name="description")= product.description
+                button(type="submit").btn.btn-primary Save
+            .text-right
+                form(action=`/products/${product._id}?_method=DELETE`, method="POST")
+                    button(type="submit").btn.btn-danger Remove
