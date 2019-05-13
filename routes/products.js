@@ -55,4 +55,17 @@ module.exports = (app) => {
       return res.redirect('/')
     });
   });
+
+  // SEARCH Product
+  app.get('/search', (req, res) => {
+      // Use a modifier i to do case-insensitive matching
+      term = new RegExp(req.query.term, 'i')
+
+      Product.find({$or:[
+          {'name': term},
+          {'category': term}
+      ]}).exec((err, products) => {
+          res.render('products-index', { products: products });
+      })
+  });
 }

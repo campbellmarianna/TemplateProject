@@ -8,7 +8,7 @@ block content
     .col-sm-8
       h1=product.name
       p=product.species
-      p Born on #{product.birthday}
+      p #{product.category}
       p=product.description
       .text-right
         a(href="/products/" + product.id + "/edit").btn-link Edit
