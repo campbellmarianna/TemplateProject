@@ -1,3 +1,5 @@
+//- products-new.pug
+
 extends layout
 
 block content
@@ -5,23 +7,20 @@ block content
   .row.justify-content-center
     .col-sm-6
       legend New Product
-      form(action="/products", method="post")
+      form(action="#" id="new-product" method="post")
         .form-group
-            label Name
-            input.form-control(name="name")
+            label Name*
+            input.form-control(name="name" required)
         .form-group
-            label Category
-            input.form-control(name="category")
+            label Category*
+            input.form-control(name="category" required)
         .form-group
-            label Rectangular Image URL
-            input.form-control(name="picUrl") 
+            label Avatar*
+            input.form-control(name="avatar" type="file" required)
         .form-group
-            label Square Image URL
-            input.form-control(name="picUrlSq")   
+            label Supply*
+            input.form-control(name="supply" required type="number" ) 
         .form-group
-            label Supply
-            input.form-control(name="supply") 
-        .form-group
-            label Description
-            textarea.form-control(name="description")   
+            label Description*
+            textarea.form-control(name="description" required minlength="10")   
         button(type="submit").btn.btn-primary Save

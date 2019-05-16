@@ -16,11 +16,8 @@ block content
                     label Rectangular Image URL
                     input.form-control(name="picUrl" value=product.picUrl) 
                 .form-group
-                    label Square Image URL
-                    input.form-control(name="picUrlSq" value=product.picUrlSq)
-                .form-group
-                    label Supply
-                    input.form-control(name="supply" value=product.supply)    
+                    label Avatar*
+                    input.form-control(name="avatar" type="file" required)
                 .form-group
                     label Description
                     textarea.form-control(name="description")= product.description

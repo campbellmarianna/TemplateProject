@@ -5,6 +5,9 @@ block content
     each product, index in products
       .col-sm-4.justify-content-center
         .card
+        if product.avatarUrl
+          img.card-img-top(src=product.avatarUrl + '-standard.', alt='Card image cap')
+        else
           img.card-img-top(src=product.picUrl, alt='Card image cap')
           .card-body
             h4.card-title= product.name
