@@ -1,6 +1,8 @@
 // PRODUCT MODELS
 const Product = require('../models/product');
 
+const mailer = require('../utils/mailer');
+
 // UPLOADING TO AWS S3
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
@@ -55,33 +57,25 @@ module.exports = (app) => {
                         return res.status(400).send({ err: err })
                     };
 
-                    // versions.forEach(function (image) {
                     let imgUrlArray = versions[0].url.split('-');
                     imgUrlArray.pop();
                     url = imgUrlArray.join('-')
                     product.avatarUrl = url;
                     product.save();
-                    // });
-
-                    res.send({ product });
+                    // Call our mail handler to manage sending emails
+                    mailer.sendMail(product, req, res)
                 });
             } else {
                 res.send({ product})
             }
         });
-        // .then((product) => {
-        //   res.redirect(`/products/${product._id}`);
-        // })
-        // .catch((err) => {
-        //   // Handle Errors
-        // }) ;
     });
 
     // SHOW Product
     app.get('/products/:id', (req, res) => {
       Product.findById(req.params.id).exec((err, product) => {
           console.log(product)
-        res.render('products-show', { product: product });
+          res.render('products-show', { product });
       });
     });
 

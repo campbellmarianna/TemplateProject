@@ -16,14 +16,5 @@ module.exports = [
         "price": 9.99,
         "picUrlSq": "https://images.unsplash.com/photo-1547793548-7a0e7dfdb24f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
         "description": "Vya Natruals is a handmade soap with Rose Basil fragrance."
-    },
-    {
-        "name": "Maui Moisture",
-        "category": "Hair",
-        "supply": "4",
-        "picUrl": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-        "price": 9.99,
-        "picUrlSq": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
-        "description": "Maui Moisture is a hair care product line  that has a shampoo with Bamboo Fibers, it helps thicken and restore weak, brittle hair."
     }
 ]

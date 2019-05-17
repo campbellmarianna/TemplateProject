@@ -9,9 +9,9 @@ block content
               img.card-img-top(src=product.avatarUrl + '-standard.', alt='Card image cap')
             else
               img.card-img-top(src=product.picUrl, alt='Card image cap')
-              .card-body
-                h4.card-title= product.name
-                small.text-muted= product.species
-                p.card-text= product.description
-                .text-right
-                    a.card-link(href=`/products/${product._id}`) View #{product.name}
+            .card-body
+              h4.card-title= product.name
+              small.text-muted= product.species
+              p.card-text= product.description
+              .text-right
+                  a.card-link(href=`/products/${product._id}`) View #{product.name}
