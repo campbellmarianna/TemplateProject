@@ -80,6 +80,7 @@ module.exports = (app) => {
     // SHOW Product
     app.get('/products/:id', (req, res) => {
       Product.findById(req.params.id).exec((err, product) => {
+          console.log(product)
         res.render('products-show', { product: product });
       });
     });
