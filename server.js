@@ -11,12 +11,13 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const mongoose = require('mongoose');
 
 
 const app = express();
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/template-project');
+// connect Mongoose to your DB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/template-project');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
